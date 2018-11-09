@@ -1,13 +1,21 @@
 package writeStringToFile;
 
-import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class WriteFile {
 
 	public static void main(String[] args) {
-		File file = new File("src/files/datei.txt");
-		// TODO Auto-generated method stub
-
+		
+		try {
+		    FileWriter writer = new FileWriter("src/duda.txt");
+		    writer.write("Hallo, du da!");
+		    
+		    writer.close();
+		    }
+		catch (IOException ex){
+		    ex.printStackTrace();
+		}
 	}
-
 }
+
