@@ -31,8 +31,7 @@ public class ServerClientWettbewerb_ZHAW {
 		try (Socket s2 = new Socket("trinat.org", 9999))
 		{
 	        PrintWriter writer = new PrintWriter(s2.getOutputStream()); 
-	        String tipp = "Hört auf Clients und stellt die Verbindung her";
-	        writer.println(tipp);
+	        writer.println("Hört auf Clients und stellt die Verbindung her");
 		    
 		 } catch(IOException ex){ 
 			 ex.printStackTrace();
