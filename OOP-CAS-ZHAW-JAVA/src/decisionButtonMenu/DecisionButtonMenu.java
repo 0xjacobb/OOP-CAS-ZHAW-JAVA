@@ -1,4 +1,5 @@
 package decisionButtonMenu;
+//Test
 
 import java.io.FileInputStream;
 
@@ -143,7 +144,6 @@ public class DecisionButtonMenu extends Application {
 			e.printStackTrace();
 		}
 	   
-	    //ois.close();
 		
 	    for (int i=0; i<array.size(); i++) {
 	    	System.out.println("WORT: " + array.get(i));
