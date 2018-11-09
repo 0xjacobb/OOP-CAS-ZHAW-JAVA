@@ -14,7 +14,7 @@ public class TippDesTagesClient {
 	
 	public void los() {
 		
-		try (Socket s = new Socket("127.0.0.1", 4242))
+		try (Socket s = new Socket("127.0.0.1", 9999))
 		{
 			InputStreamReader streamReader = new InputStreamReader(s.getInputStream()); 
 			BufferedReader reader = new BufferedReader(streamReader);
