@@ -5,6 +5,13 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+
+/*
+ * Kann auchmit telnet angeschaut werden. 
+ * 1. Java Programm laufen lassen
+ * 2. Im Terminal "telnet localhost 4242" eingeben und man bekommt die Tipps zurück (auch in Konsole)
+ */
+
 public class TippDesTagesServer {
 	
 	String[] tippListe = {"Nehme kleiner Bisse", "Sali Walti", "Du bist schön"};
