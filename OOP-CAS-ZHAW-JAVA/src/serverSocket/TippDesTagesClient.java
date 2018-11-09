@@ -3,6 +3,7 @@ package serverSocket;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import java.net.Socket;
 
 
@@ -14,7 +15,7 @@ public class TippDesTagesClient {
 	
 	public void los() {
 		
-		try (Socket s = new Socket("127.0.0.1", 9999))
+		try (Socket s = new Socket("127.0.0.1", 4242))
 		{
 			InputStreamReader streamReader = new InputStreamReader(s.getInputStream()); 
 			BufferedReader reader = new BufferedReader(streamReader);
@@ -25,6 +26,7 @@ public class TippDesTagesClient {
 		 } catch(IOException ex){ 
 			 ex.printStackTrace();
 		 } 
+		
 	}
 
 	public static void main(String[] args) {
