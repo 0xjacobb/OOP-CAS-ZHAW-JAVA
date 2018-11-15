@@ -1,14 +1,8 @@
 package decisionButtonMenu;
 //Test
 
-import java.io.FileInputStream;
-
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import javafx.application.Application;
@@ -28,7 +22,6 @@ import javafx.stage.Stage;
 
 public class DecisionButtonMenu extends Application {
 	ArrayList<String> answers = new ArrayList<String>();
-	ArrayList<String> array;
 	public String path = "src/answers.ser";
 	
 	public void start(Stage stage) {
@@ -81,7 +74,8 @@ public class DecisionButtonMenu extends Application {
 			@Override
 			public void handle(ActionEvent event) {
 				try {
-					deSerialize();
+					DeSerialize deSerialize = new DeSerialize(path);
+					deSerialize.deSerialize();
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -93,7 +87,8 @@ public class DecisionButtonMenu extends Application {
 		saveItem.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				serialize();
+				Serialize serialize = new Serialize(path, answers);
+				serialize.serialize();
 			}
 		});
 	}
@@ -117,38 +112,6 @@ public class DecisionButtonMenu extends Application {
 			answers.add(input);
 		}
 	}	
-	
-	public void serialize() {
-		try (OutputStream fos= new FileOutputStream(path);
-				ObjectOutputStream oos = new ObjectOutputStream(fos))
-				{
-					oos.writeObject(answers);
-					oos.close();
-				}
-				
-				catch (IOException e)
-				{
-					e.printStackTrace();	
-				}
-	}
-	
-	public void deSerialize() throws FileNotFoundException, IOException {
-	
-	    try (FileInputStream fis = new FileInputStream (path);
-	    	    ObjectInputStream ois = new ObjectInputStream (fis))     
-	    {
-			array = (ArrayList<String>) ois.readObject();
-		} 
-	    
-	    catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-	   
-		
-	    for (int i=0; i<array.size(); i++) {
-	    	System.out.println("WORT: " + array.get(i));
-        }
-	}
 
 	public static void main(String[] args) {
 		launch(args);
