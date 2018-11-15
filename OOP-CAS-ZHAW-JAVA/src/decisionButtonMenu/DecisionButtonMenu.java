@@ -38,9 +38,14 @@ public class DecisionButtonMenu extends Application {
 		Menu menuDatei = new Menu("Datei");
 		MenuItem loadItem = new MenuItem("Entscheidung laden");
 		MenuItem saveItem = new MenuItem("Entscheidung speichern");
+		
+		Menu menuDateiStategie = new Menu("Speichere-Strategie");
+		MenuItem objectItem = new MenuItem("Object");
+		MenuItem textFileItem = new MenuItem("File");
 
-		menuBar.getMenus().addAll(menuDatei);
+		menuBar.getMenus().addAll(menuDatei, menuDateiStategie);
 		menuDatei.getItems().addAll(loadItem,saveItem);
+		menuDateiStategie.getItems().addAll(objectItem, textFileItem);
 		
 		// Add label, text field and buttons
 		Label nameLabel = new Label("Tat:");
@@ -89,6 +94,34 @@ public class DecisionButtonMenu extends Application {
 			public void handle(ActionEvent event) {
 				Serialize serialize = new Serialize(path, answers);
 				serialize.serialize();
+			}
+		});
+		
+		textFileItem.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				DecisionReadWriteText readWriteText = new DecisionReadWriteText(answers);
+				try {
+					readWriteText.writeTextFile();
+					readWriteText.readTextFile();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
+		
+		objectItem.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				Serialize serialize = new Serialize(path, answers);
+				serialize.serialize();
+				DeSerialize deSerialize = new DeSerialize(path);
+				try {
+					deSerialize.deSerialize();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 		});
 	}
