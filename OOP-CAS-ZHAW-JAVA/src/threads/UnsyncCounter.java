@@ -13,7 +13,7 @@ class Counter {
 	private int count = 0;
 	public final static int LIMIT = 5;
 	
-	void up() {
+	synchronized void up() {
 		if (count < LIMIT) {
 			count++;
 		}
@@ -22,7 +22,7 @@ class Counter {
 		}
 	}
 	
-	void down() {
+	synchronized void down() {
 	    if (count > 0) {
 	    	count --;
 	    }
