@@ -9,7 +9,7 @@ public class MeinRunnable implements Runnable {
 	
 	private void los() {
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(3000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -17,7 +17,7 @@ public class MeinRunnable implements Runnable {
 	}
 	
 	private void tuNochMehr() {
-		System.out.println("zben auf dem Stack");
+		System.out.println("oben auf dem Stack");
 	}
 
 }
