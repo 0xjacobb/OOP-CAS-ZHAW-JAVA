@@ -10,12 +10,13 @@ class MutexThread extends Thread {
 	public void run() { 
 		while (true) {
 			mutex.p();
-			System.out.println("kritischen Abschnitt betreten"); 
+			System.out.println("kritischen Abschnitt betreten: " + Thread.currentThread().getName()); 
 			try {
 				sleep((int) (Math.random() * 1000));
 			} catch (InterruptedException e) {
 			}
-			System.out.println("kritischer Abschnitt wird " +"verlassen"); mutex.v();
+			System.out.println("kritischer Abschnitt wird verlassen: " + Thread.currentThread().getName()); 
+			mutex.v();
 		}
 	}
 }
